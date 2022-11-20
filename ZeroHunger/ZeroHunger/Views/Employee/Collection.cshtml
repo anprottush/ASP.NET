@@ -1,0 +1,54 @@
+﻿@model List<ZeroHunger.Models.Food>
+@{
+    ViewBag.Title = "Collection";
+}
+
+<h2>Collection</h2>
+
+@if (@TempData["message"] != null)
+{
+    <h3 class="alert alert-warning">@TempData["message"]</h3>
+    <br />
+    <br>
+}
+<a href="#" class="btn btn-success">Create</a>
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Requested Restaurant</th>
+            <th>Restuarant Location</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Type</td>
+                <td>@item.Quantity</td>
+                <td>@item.Status</td>
+                <td>@item.RequestedRestaurant</td>
+                <td>@HttpContext.Current.Session["location"]</td>
+                @if (item.Status == "pending")
+                {
+                    <td>
+                    <a href="/Employee/Delivery/@item.Id" class="btn btn-success">Delivery</a>
+                </td>
+                }
+                
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a href="/Admin/Dashboard" class="btn btn-primary">Dashboard</a>
+</div>
+
+
