@@ -1,0 +1,45 @@
+﻿@model ProductSystem.Database.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    if (@TempData["msg"] != null)
+    {
+    <span class="alert alert-info">@TempData["msg"]</span><br /><br />
+    }
+    <a href="/student/create" class="btn btn-success">Create</a><br /><br />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var pr in Model)
+            {
+                <tr>
+                    <td>@pr.Id</td>
+                    <td>@pr.Name</td>
+                    <td>@pr.Price</td>
+                    <td>@pr.Quantity</td>
+                    <td>
+                        <a href="/product/addtocart/@pr.Id" class="btn btn-info">Add To Cart</a>
+                        <a href="/product/edit/@pr.Id" class="btn btn-success">Edit</a>
+                        <a href="/product/delete/@pr.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
