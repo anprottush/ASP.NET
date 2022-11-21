@@ -1,0 +1,30 @@
+﻿@model ZeroHunger.Models.Food
+@{
+    ViewBag.Title = "AssignToEmployee";
+}
+
+<h2>Assign To Employee</h2>
+
+<form action="" method="post" class="form-horizontal">
+    <h4>Admin </h4>
+    <hr />
+
+    <input type="hidden" value="@Model.Id" name="Id" />
+
+    <div class="form-group">
+
+        <label for="name" class="control-label col-md-2">Assigned Employee</label>
+        <div class="col-md-10">
+            <input type="text" name="AssignedEmployee" class="form-control" />
+        </div>
+
+        <br /><br />
+
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Assign" class="btn btn-default" />
+        </div>
+    </div>
+    <div>
+        <a href="//index" class="">Back to List</a>
+    </div>
+</form>

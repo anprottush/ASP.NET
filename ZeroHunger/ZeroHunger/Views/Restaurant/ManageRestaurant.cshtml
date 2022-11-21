@@ -1,0 +1,46 @@
+﻿@model List<ZeroHunger.Models.Restaurant>
+@{
+    ViewBag.Title = "ManageRestaurant";
+}
+
+<h2>Manage Restaurant</h2>
+
+@if (@TempData["message"] != null)
+{
+    <h4 class="alert alert-warning">@TempData["message"]</h4>
+    <br />
+}
+<a href="/Restaurant/Create" class="btn btn-success">Create</a>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Location</th>
+            <th>Phone Number</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.Id</td>
+                <td>@restaurant.Name</td>
+                <td>@restaurant.UserName</td>
+                <td>@restaurant.Location</td>
+                <td>@restaurant.PhoneNumber</td>
+                <td>
+                    <a href="/Restaurant/Edit/@restaurant.Id" class="btn btn-success">Edit</a>
+                    <a href="/Restaurant/Delete/@restaurant.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

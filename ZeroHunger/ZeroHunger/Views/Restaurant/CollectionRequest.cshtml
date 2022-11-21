@@ -1,0 +1,44 @@
+﻿@model List<ZeroHunger.Models.Food>
+@{
+    ViewBag.Title = "CollectionRequest";
+}
+
+<h2>Collection Request</h2>
+
+@if (@TempData["message"] != null)
+{
+    <h3 class="alert alert-warning">@TempData["message"]</h3>
+    <br />
+}
+<a href="/Restaurant/CreateRequest" class="btn btn-success">Create Request</a>
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Food Type</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Requested Restaurant</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var food in Model)
+        {
+            <tr>
+                <td>@food.Id</td>
+                <td>@food.Type</td>
+                <td>@food.Quantity</td>
+                <td>@food.Status</td>
+                <td>@food.RequestedRestaurant</td>
+                <td>
+                    <a href="/Restaurant/DeleteFood/@food.Id" class="btn btn-danger">Delete Request</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

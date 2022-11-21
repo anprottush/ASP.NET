@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZeroHungerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssignedEmployee" Type="varchar" MaxLength="50" />
+    <Property Name="RequestedRestaurant" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ZeroHunger.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="UserType" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ZeroHungerModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [User].[UserId] AS [UserId], 
+    [User].[UserName] AS [UserName], 
+    [User].[UserType] AS [UserType], 
+    [User].[Password] AS [Password]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
