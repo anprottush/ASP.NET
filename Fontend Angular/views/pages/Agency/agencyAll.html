@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/content/bootstrap-5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Agency List</title>
+</head>
+<body ng-app="my-app">
+    <div ng-controller="agencylistCtrl" class="container mt-3">
+        <h3>Agency List</h3>
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>IsInternational</th>
+                  <th>User Id</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="a in agencies" >
+                    <td>{{a.Id}}</td>
+                    <td>{{a.Name}}</td>
+                    <td>{{a.IsInternational}}</td>
+                    <td>{{a.UserId}}</td>
+                    <td>
+                        <a href="agencyEdit.html" class="btn btn-success" >Edit</a>
+                        
+                        <button ng-controller="agencyDeleteCtrl" class="btn btn-danger" ng-click="deleteAgency(a.Id)">Delete</button>
+                    </td>
+                </tr>  
+              </tbody>
+        </table>
+    </div>
+    <script src="/app/libs/angular-1.8.2/angular.min.js"></script>
+    <script src="/content/bootstrap-5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/app/controllers/Agency/agencyAll.js"></script>
+    
+    
+</body>
+</html>
